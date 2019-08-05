@@ -1,12 +1,12 @@
 package Chess;
 
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class MapGenerator {
@@ -164,6 +164,7 @@ public class MapGenerator {
             int bound = (int)Math.sqrt(size);
             String[][] map = new String[bound][bound];
             // Get the base potential and store to Song list
+            System.out.println("List of songs:");
             ArrayList<Double> difflist = new ArrayList<>();
             ArrayList<Song> songlist = new ArrayList<>();
             Main mm = new Main();
@@ -171,6 +172,7 @@ public class MapGenerator {
                 Double bp = mm.matchSong(song);
                 songlist.add(new Song(song, bp));
                 difflist.add(bp);
+                System.out.println(song + " " + bp);
             }
             // Sort up the base potential list
             Collections.sort(difflist);
@@ -277,21 +279,26 @@ public class MapGenerator {
                     // If only chunk size = 1 then fill the four block manually
                     linechunksize = sgroup.size() / 4;
                     if(linechunksize != 1){
+                        int groupPos = 0;
                         // Fill upper row
-                        for(int i = currentlayer; i <= linechunksize; i++){
-                            map[currentlayer][i+1] = sgroup.get(i).getSongTitle();
+                        for (int i = currentlayer; i < currentlayerbound - 1; i++) {
+                            map[currentlayer][i + 1] = sgroup.get(groupPos).getSongTitle();
+                            groupPos++;
                         }
                         // Fill bottom row
-                        for(int j = currentlayer; j <= linechunksize; j++){
-                            map[currentlayerbound][j+1] = sgroup.get(j + linechunksize).getSongTitle();
+                        for (int j = currentlayer; j < currentlayerbound - 1; j++) {
+                            map[currentlayerbound][j + 1] = sgroup.get(groupPos).getSongTitle();
+                            groupPos++;
                         }
                         // Fill left line
-                        for(int k = currentlayer; k <= linechunksize; k++){
-                            map[k+1][currentlayer] = sgroup.get(k + linechunksize + linechunksize).getSongTitle();
+                        for (int k = currentlayer; k < currentlayerbound - 1; k++) {
+                            map[k + 1][currentlayer] = sgroup.get(groupPos).getSongTitle();
+                            groupPos++;
                         }
                         // Fill right line
-                        for(int l = currentlayer; l <= linechunksize; l++){
-                            map[l+1][currentlayerbound] = sgroup.get(l + linechunksize + linechunksize + linechunksize - 1).getSongTitle();
+                        for (int l = currentlayer; l < currentlayerbound - 1; l++) {
+                            map[l + 1][currentlayerbound] = sgroup.get(groupPos).getSongTitle();
+                            groupPos++;
                         }
                         currentlayerbound--;
                         currentlayer++;
@@ -387,30 +394,6 @@ public class MapGenerator {
         }
     }
 
-    public Double getBasePotential(String song){
-        SongTreeHelper sth = new SongTreeHelper();
-        try {
-            int index = Arrays.asList(sth.songlistFreePack).indexOf(song);
-            double diff = sth.songlistFreePackDiff[index];
-            return diff;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            try {
-                int index = Arrays.asList(sth.songlistVLPack).indexOf(song);
-                double diff = sth.songlistVLPackDiff[index];
-                return diff;
-            } catch (ArrayIndexOutOfBoundsException e2) {
-                try {
-                    int index = Arrays.asList(sth.songlistLSPack).indexOf(song);
-                    double diff = sth.songlistLSPackDiff[index];
-                    return diff;
-                } catch (ArrayIndexOutOfBoundsException e3) {
-                    int index = Arrays.asList(sth.songlistECPack).indexOf(song);
-                    double diff = sth.songlistECPackDiff[index];
-                    return diff;
-                }
-            }
-        }
-    }
 
     private boolean checkOdd(int num){
         if(num % 2 ==0){

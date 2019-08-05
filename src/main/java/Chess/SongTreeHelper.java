@@ -3,54 +3,75 @@ package Chess;
 import javafx.scene.control.TreeItem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 
 public class SongTreeHelper {
-    public String[] packs = {"Arcaea","Vicious Labyrinth","Luminous Sky","Eternal Core","Absolute Reason","Binary Enfold","Ambivalent Vision","Crimson Solace","CHUNITHM","Groove Coaster","Tone Sphere","Lanota","Dynamix","Stellights"};
+    String[] packs = {"Arcaea", "Vicious Labyrinth", "Luminous Sky", "Eternal Core", "Absolute Reason", "Binary Enfold", "Ambivalent Vision", "Crimson Solace", "CHUNITHM", "Groove Coaster", "Tone Sphere", "Lanota", "Dynamix", "Stellights"};
 
-    String[] songlistFreePack = {"Rise","Sayonara Hatsukoi","Fairytale","Lucifer","Snow White","Vexaria","Lost Civilization","qualia -ideaesthsia-","GOODTEK(Arcaea Edit)","Shades of Light in a Transcendent Realm","Babaroque","Dement ~after legend~","Dandelion","Anokumene","Infinity Heaven","Brand new world","Chronostasis","Kanagawa Cyber Culvert","Clotho and the stargazer","Ignotus","Harutopia ~Utopia of Spring~","Rabbit In The Black Room","Red and Blue","One Last Drive","Dreamin' Attraction!!","Syro","Reinvent","Blaster","Cybernecia Catharsis","inkar-usi","Illegal Paradise","Bookmaker (2D Version)","Suomi","Nhelv","LunarOrbit -believe in the Espebranch road-","Purgatorium","Rugie","ReviXy","Grimheart","SUPERNOVA","VECTOR"};
-    public double[] songlistFreePackDiff = {7.7,6.0,7.2,8.3,8.6,7.4,9.5,9.2,9.3,8.4,8.7,7.9,8.6,9.2,7.6,7.9,9.1,9.0,7.5,9.7,8.6,8.5,9.7,8.0,9.8,9.5,8.6,9.5,9.8,7.8,9.8,8.3,7.7,9.8,9.4,8.4,9.0,8.9,8.6,9.7,9.5};
+    String[] songlistFreePack = {"Rise", "Sayonara Hatsukoi", "Fairytale", "Lucifer", "Snow White", "Vexaria", "Lost Civilization", "qualia -ideaesthsia-", "GOODTEK(Arcaea Edit)", "Shades of Light in a Transcendent Realm", "Babaroque", "Dement ~after legend~", "Dandelion", "Anokumene", "Infinity Heaven", "Brand new world", "Chronostasis", "Kanagawa Cyber Culvert", "Clotho and the stargazer", "Ignotus", "Harutopia ~Utopia of Spring~", "Rabbit In The Black Room", "Red and Blue", "One Last Drive", "Dreamin' Attraction!!", "Syro", "Reinvent", "Blaster", "Cybernecia Catharsis", "inkar-usi", "Illegal Paradise", "Bookmaker (2D Version)", "Suomi", "Nhelv", "LunarOrbit -believe in the Espebranch road-", "Purgatorium", "Rugie", "ReviXy", "Grimheart", "SUPERNOVA", "VECTOR"};
+    double[] songlistFreePackDiff = {7.7, 6.0, 7.2, 8.3, 8.6, 7.4, 9.5, 9.2, 9.3, 8.4, 8.7, 7.9, 8.6, 9.2, 7.6, 7.9, 9.1, 9.0, 7.5, 9.7, 8.6, 8.5, 9.7, 8.0, 9.8, 9.5, 8.6, 9.5, 9.8, 7.8, 9.8, 8.3, 7.7, 9.8, 9.4, 8.4, 9.0, 8.9, 8.6, 9.7, 9.5};
 
-    String[] songlistVLPack = {"SOUNDWiTCH","Iconoclast","trappola bewitching","conflict","Axium Crisis","Grievous Lady"};
-    public double[] songlistVLPackDiff = {9.9,9.4,10.0,10.2,10.6,11.2};
+    String[] songlistVLPack = {"SOUNDWiTCH", "Iconoclast", "trappola bewitching", "conflict", "Axium Crisis", "Grievous Lady"};
+    double[] songlistVLPackDiff = {9.9, 9.4, 10.0, 10.2, 10.6, 11.2};
 
-    String[] songlistLSPack = {"The Message","Sulfur","Maze No.9","Halcyon","Ether Strike","Fracture Ray"};
-    public double[] songlistLSPackDiff = {9.7,9.8,8.9,10.7,10.2,11.1};
+    String[] songlistLSPack = {"The Message", "Sulfur", "Maze No.9", "Halcyon", "Ether Strike", "Fracture Ray"};
+    double[] songlistLSPackDiff = {9.7, 9.8, 8.9, 10.7, 10.2, 11.1};
 
-    String[] songlistECPack = {"cry of viyella","I've heard it said","Relentless","memoryfactory.lzh","Essence of Twilight","Lumia","Sheriruth","PRAGMATISM","Solitary Dream"};
-    public double[] songlistECPackDiff = {8.7,8.2,8.1,8.8,9.0,8.5,10.6,10.1,8.4};
+    String[] songlistECPack = {"cry of viyella", "I've heard it said", "Relentless", "memoryfactory.lzh", "Essence of Twilight", "Lumia", "Sheriruth", "PRAGMATISM", "Solitary Dream"};
+    double[] songlistECPackDiff = {8.7, 8.2, 8.1, 8.8, 9.0, 8.5, 10.6, 10.1, 8.4};
 
-    String[] songlistARPack = {"Antithese","Corruption","Black Territory","Vicious Heroism","Cyaegha"};
-    public double[] songlistARPackDiff = {8.8,9.7,9.5,10.0,10.8};
+    String[] songlistARPack = {"Antithese", "Corruption", "Black Territory", "Vicious Heroism", "Cyaegha"};
+    double[] songlistARPackDiff = {8.8, 9.7, 9.5, 10.0, 10.8};
 
-    String[] songlistBEPack = {"Memory Forest","next to you","Silent Rush","Strongholds","Singularity"};
-    public double[] songlistBEPackDiff = {9.7,8.7,8.4,9.1,10.4};
+    String[] songlistBEPack = {"Memory Forest", "next to you", "Silent Rush", "Strongholds", "Singularity"};
+    double[] songlistBEPackDiff = {9.7, 8.7, 8.4, 9.1, 10.4};
 
-    String[] songlistAVPack = {"Blossoms","Romance Wars","Moonheart","Lethaeus","Genesis"};
-    public double[] songlistAVPackDiff = {7.6,7.4,8.5,9.5,8.4};
+    String[] songlistAVPack = {"Blossoms", "Romance Wars", "Moonheart", "Lethaeus", "Genesis"};
+    double[] songlistAVPackDiff = {7.6, 7.4, 8.5, 9.5, 8.4};
 
-    String[] songlistCSPack = {"Paradise","Flashback","Flyburg and Endroll","Party Vinyl","Nirv lucE"};
-    public double[] songlistCSPackDiff = {7.8,8.5,9.2,9.8,10.3};
+    String[] songlistCSPack = {"Paradise", "Flashback", "Flyburg and Endroll", "Party Vinyl", "Nirv lucE"};
+    double[] songlistCSPackDiff = {7.8, 8.5, 9.2, 9.8, 10.3};
 
-    String[] songlistCHUNITHMPack = {"Garakuta Doll Play","Ikazuchi","World Vanquisher"};
-    public double[] songlistCHUNITHMPackDiff = {10.3,10.4,10.6};
+    String[] songlistCHUNITHMPack = {"Garakuta Doll Play", "Ikazuchi", "World Vanquisher"};
+    double[] songlistCHUNITHMPackDiff = {10.3, 10.4, 10.6};
 
-    String[] songlistGCPack = {"MERLIN","OMAKENO Stroke","DX Choseinou Full Metal Shojo","Scarlet Lance","ouroboros -twin stroke of the end-"};
-    public double[] songlistGCPackDiff = {8.5,9.6,9.7,10.3,10.6};
+    String[] songlistGCPack = {"MERLIN", "OMAKENO Stroke", "DX Choseinou Full Metal Shojo", "Scarlet Lance", "ouroboros -twin stroke of the end-"};
+    double[] songlistGCPackDiff = {8.5, 9.6, 9.7, 10.3, 10.6};
 
-    String[] songlistTSPack = {"Hall of Mirrors","Hikari","Linear Accelerator","STAGER (ALL STAGE CLEAR)","Tiferet"};
-    public double[] songlistTSPackDiff = {8.2,8.3,9.6,9.2,10.5};
+    String[] songlistTSPack = {"Hall of Mirrors", "Hikari", "Linear Accelerator", "STAGER (ALL STAGE CLEAR)", "Tiferet"};
+    double[] songlistTSPackDiff = {8.2, 8.3, 9.6, 9.2, 10.5};
 
-    String[] songlistLAPack = {"Dream goes on","Journey","Specta","cyanine","Quon"};
-    public double[] songlistLAPackDiff = {7.5,8.6,9.5,10.5,9.7};
+    String[] songlistLAPack = {"Dream goes on", "Journey", "Specta", "cyanine", "Quon"};
+    double[] songlistLAPackDiff = {7.5, 8.6, 9.5, 10.5, 9.7};
 
-    String[] songlistSPack = {"Surrender","Yosakura Fubuki"};
-    public double[] songlistSPackDiff = {8.8,9.6};
+    String[] songlistSPack = {"Surrender", "Yosakura Fubuki"};
+    double[] songlistSPackDiff = {8.8, 9.6};
 
-    String[] songlistDYPack = {"Moonlight of Sand Castle","REconstruction","Evoltex(poppi'n mix)","Oracle","αterlβus"};
-    public double[] songlistDYPackDiff = {7.7,8.7,8.9,9.2,10.5};
+    String[] songlistDYPack = {"Moonlight of Sand Castle", "REconstruction", "Evoltex(poppi'n mix)", "Oracle", "αterlβus"};
+    double[] songlistDYPackDiff = {7.7, 8.7, 8.9, 9.2, 10.5};
 
-    public ArrayList<String[]> getSongList(){
+    public ArrayList<Pack> getSongPacks() {
+        ArrayList<Pack> songPacks = new ArrayList<>();
+        songPacks.add(new Pack(songlistECPack, songlistECPackDiff));
+        songPacks.add(new Pack(songlistFreePack, songlistFreePackDiff));
+        songPacks.add(new Pack(songlistLSPack, songlistLSPackDiff));
+        songPacks.add(new Pack(songlistVLPack, songlistVLPackDiff));
+        songPacks.add(new Pack(songlistARPack, songlistARPackDiff));
+        songPacks.add(new Pack(songlistAVPack, songlistAVPackDiff));
+        songPacks.add(new Pack(songlistBEPack, songlistBEPackDiff));
+        songPacks.add(new Pack(songlistCHUNITHMPack, songlistCHUNITHMPackDiff));
+        songPacks.add(new Pack(songlistCSPack, songlistCSPackDiff));
+        songPacks.add(new Pack(songlistDYPack, songlistDYPackDiff));
+        songPacks.add(new Pack(songlistGCPack, songlistGCPackDiff));
+        songPacks.add(new Pack(songlistLAPack, songlistLAPackDiff));
+        songPacks.add(new Pack(songlistSPack, songlistSPackDiff));
+        songPacks.add(new Pack(songlistTSPack, songlistTSPackDiff));
+        return songPacks;
+    }
+
+    public ArrayList<String[]> getSongList() {
         ArrayList<String[]> list = new ArrayList<>();
         list.add(songlistECPack);
         list.add(songlistFreePack);
@@ -69,7 +90,7 @@ public class SongTreeHelper {
         return list;
     }
 
-    public ArrayList<TreeItem> getSongs(){
+    public ArrayList<TreeItem> getSongs() {
         ArrayList<TreeItem> songs = new ArrayList<>();
 
         TreeItem freepack = new TreeItem("Arcaea");
@@ -120,129 +141,166 @@ public class SongTreeHelper {
         return songs;
     }
 
-    private ArrayList<TreeItem> getFreePackSongs(){
+    private ArrayList<TreeItem> getFreePackSongs() {
         ArrayList<TreeItem> freepack = new ArrayList<>();
-        for(String songTitle : songlistFreePack){
+        for (String songTitle : songlistFreePack) {
             TreeItem song = new TreeItem(songTitle);
             freepack.add(song);
         }
         return freepack;
     }
 
-    private ArrayList<TreeItem> getVLPackSongs(){
+    private ArrayList<TreeItem> getVLPackSongs() {
         ArrayList<TreeItem> vlpack = new ArrayList<>();
-        for(String songTitle : songlistVLPack){
+        for (String songTitle : songlistVLPack) {
             TreeItem song = new TreeItem(songTitle);
             vlpack.add(song);
         }
         return vlpack;
     }
 
-    private ArrayList<TreeItem> getLSPackSongs(){
+    private ArrayList<TreeItem> getLSPackSongs() {
         ArrayList<TreeItem> lspack = new ArrayList<>();
-        for(String songTitle : songlistLSPack){
+        for (String songTitle : songlistLSPack) {
             TreeItem song = new TreeItem(songTitle);
             lspack.add(song);
         }
         return lspack;
     }
 
-    private ArrayList<TreeItem> getECPackSongs(){
+    private ArrayList<TreeItem> getECPackSongs() {
         ArrayList<TreeItem> ecpack = new ArrayList<>();
-        for(String songTitle : songlistECPack){
+        for (String songTitle : songlistECPack) {
             TreeItem song = new TreeItem(songTitle);
             ecpack.add(song);
         }
         return ecpack;
     }
 
-    private ArrayList<TreeItem> getARPackSongs(){
+    private ArrayList<TreeItem> getARPackSongs() {
         ArrayList<TreeItem> ecpack = new ArrayList<>();
-        for(String songTitle : songlistARPack){
+        for (String songTitle : songlistARPack) {
             TreeItem song = new TreeItem(songTitle);
             ecpack.add(song);
         }
         return ecpack;
     }
 
-    private ArrayList<TreeItem> getBEPackSongs(){
+    private ArrayList<TreeItem> getBEPackSongs() {
         ArrayList<TreeItem> ecpack = new ArrayList<>();
-        for(String songTitle : songlistBEPack){
+        for (String songTitle : songlistBEPack) {
             TreeItem song = new TreeItem(songTitle);
             ecpack.add(song);
         }
         return ecpack;
     }
 
-    private ArrayList<TreeItem> getAVPackSongs(){
+    private ArrayList<TreeItem> getAVPackSongs() {
         ArrayList<TreeItem> ecpack = new ArrayList<>();
-        for(String songTitle : songlistAVPack){
+        for (String songTitle : songlistAVPack) {
             TreeItem song = new TreeItem(songTitle);
             ecpack.add(song);
         }
         return ecpack;
     }
 
-    private ArrayList<TreeItem> getCSPackSongs(){
+    private ArrayList<TreeItem> getCSPackSongs() {
         ArrayList<TreeItem> ecpack = new ArrayList<>();
-        for(String songTitle : songlistCSPack){
+        for (String songTitle : songlistCSPack) {
             TreeItem song = new TreeItem(songTitle);
             ecpack.add(song);
         }
         return ecpack;
     }
 
-    private ArrayList<TreeItem> getCHUNITHMPackSongs(){
+    private ArrayList<TreeItem> getCHUNITHMPackSongs() {
         ArrayList<TreeItem> ecpack = new ArrayList<>();
-        for(String songTitle : songlistCHUNITHMPack){
+        for (String songTitle : songlistCHUNITHMPack) {
             TreeItem song = new TreeItem(songTitle);
             ecpack.add(song);
         }
         return ecpack;
     }
 
-    private ArrayList<TreeItem> getGCPackSongs(){
+    private ArrayList<TreeItem> getGCPackSongs() {
         ArrayList<TreeItem> ecpack = new ArrayList<>();
-        for(String songTitle : songlistGCPack){
+        for (String songTitle : songlistGCPack) {
             TreeItem song = new TreeItem(songTitle);
             ecpack.add(song);
         }
         return ecpack;
     }
 
-    private ArrayList<TreeItem> getTSPackSongs(){
+    private ArrayList<TreeItem> getTSPackSongs() {
         ArrayList<TreeItem> ecpack = new ArrayList<>();
-        for(String songTitle : songlistTSPack){
+        for (String songTitle : songlistTSPack) {
             TreeItem song = new TreeItem(songTitle);
             ecpack.add(song);
         }
         return ecpack;
     }
 
-    private ArrayList<TreeItem> getLAPackSongs(){
+    private ArrayList<TreeItem> getLAPackSongs() {
         ArrayList<TreeItem> ecpack = new ArrayList<>();
-        for(String songTitle : songlistLAPack){
+        for (String songTitle : songlistLAPack) {
             TreeItem song = new TreeItem(songTitle);
             ecpack.add(song);
         }
         return ecpack;
     }
 
-    private ArrayList<TreeItem> getSPackSongs(){
+    private ArrayList<TreeItem> getSPackSongs() {
         ArrayList<TreeItem> ecpack = new ArrayList<>();
-        for(String songTitle : songlistSPack){
+        for (String songTitle : songlistSPack) {
             TreeItem song = new TreeItem(songTitle);
             ecpack.add(song);
         }
         return ecpack;
     }
 
-    private ArrayList<TreeItem> getDYPackSongs(){
+    private ArrayList<TreeItem> getDYPackSongs() {
         ArrayList<TreeItem> ecpack = new ArrayList<>();
-        for(String songTitle : songlistDYPack){
+        for (String songTitle : songlistDYPack) {
             TreeItem song = new TreeItem(songTitle);
             ecpack.add(song);
         }
         return ecpack;
+    }
+
+    String[] quickGenerateSongList(int size) {
+        Random r = new Random();
+        ArrayList<String[]> sl = getSongList();
+        ArrayList<String> temp = new ArrayList<>();
+        ArrayList<String> tempresult = new ArrayList<>();
+        String[] result;
+        for (String[] pack : sl) {
+            temp.addAll(Arrays.asList(pack));
+        }
+        for (int i = 0; i < size; i++) {
+            int n = r.nextInt(temp.size());
+            tempresult.add(temp.get(n));
+            temp.remove(n);
+        }
+        result = tempresult.toArray(new String[0]);
+        return result;
+    }
+
+    public class Pack {
+        String[] packContent;
+        double[] diffInfo;
+
+        public Pack(String[] pc, double[] di) {
+            this.packContent = pc;
+            this.diffInfo = di;
+        }
+
+        public double[] getDiffInfo() {
+            return diffInfo;
+        }
+
+        public String[] getPackContent() {
+            return packContent;
+        }
     }
 }
+

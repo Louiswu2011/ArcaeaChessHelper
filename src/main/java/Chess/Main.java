@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -41,14 +42,13 @@ public class Main extends Application {
         Button removebutton = (Button)scene.lookup("#remove");
         Button random = (Button)scene.lookup("#random");
         Button generate = (Button)scene.lookup("#generate");
+        Button quickgen = (Button) scene.lookup("#quickgen");
         ListView selectedlist = (ListView)scene.lookup("#selected");
         SongTreeHelper sth = new SongTreeHelper();
         MapGenerator mg = new MapGenerator();
         ArrayList<Double> selecteddiff = new ArrayList<>();
 
         TreeItem songlist = new TreeItem("Songs");
-
-
 
 
         songlist.getChildren().addAll(sth.getSongs());
@@ -70,24 +70,73 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent event) {
                 TreeItem<String> selected = (TreeItem<String>) songtree.getSelectionModel().getSelectedItem();
-                if(!songtree.getSelectionModel().isEmpty() && songtree.getSelectionModel().getSelectedIndex()>1){
+                if (!songtree.getSelectionModel().isEmpty() && songtree.getSelectionModel().getSelectedIndex() > 1) {
                     String name = selected.getValue();
                     SongTreeHelper sth = new SongTreeHelper();
-                    if(!Arrays.asList(sth.packs).contains(name)){
-                        if(!selectedlist.getItems().contains(selected.getValue())){
+                    if (!Arrays.asList(sth.packs).contains(name)) {
+                        if (!selectedlist.getItems().contains(selected.getValue())) {
                             int num = Integer.valueOf(counter.getAccessibleText());
                             selectedlist.getItems().add(selected.getValue());
                             num++;
                             counter.setAccessibleText(Integer.toString(num));
                             counter.setText("Song selected: " + num);
                             // System.out.println(songtree.getSelectionModel().getSelectedIndex());
-                            selecteddiff.add(mg.getBasePotential(selected.getValue()));
+                            selecteddiff.add(matchSong(selected.getValue()));
                             checkCount(counter, Integer.toString(getDesiredSize(mapsize)));
                             updateAvg(avglabel, selecteddiff);
                         }
                     }
-                }else{
+                } else {
 
+                }
+            }
+        });
+
+        songtree.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getClickCount() == 2) {
+                    TreeItem<String> selected = (TreeItem<String>) songtree.getSelectionModel().getSelectedItem();
+                    if (!songtree.getSelectionModel().isEmpty() && songtree.getSelectionModel().getSelectedIndex() > 1) {
+                        String name = selected.getValue();
+                        SongTreeHelper sth = new SongTreeHelper();
+                        if (!Arrays.asList(sth.packs).contains(name)) {
+                            if (!selectedlist.getItems().contains(selected.getValue())) {
+                                int num = Integer.valueOf(counter.getAccessibleText());
+                                selectedlist.getItems().add(selected.getValue());
+                                num++;
+                                counter.setAccessibleText(Integer.toString(num));
+                                counter.setText("Song selected: " + num);
+                                // System.out.println(songtree.getSelectionModel().getSelectedIndex());
+                                selecteddiff.add(matchSong(selected.getValue()));
+                                checkCount(counter, Integer.toString(getDesiredSize(mapsize)));
+                                updateAvg(avglabel, selecteddiff);
+                            }
+                        }
+                    } else {
+
+                    }
+                }
+            }
+        });
+
+        selectedlist.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getClickCount() == 2) {
+                    SelectionModel model = selectedlist.getSelectionModel();
+                    String selected = (String) selectedlist.getSelectionModel().getSelectedItem();
+                    if (selected != null) {
+                        selectedlist.getItems().remove(model.getSelectedIndex());
+                        System.out.println(model.getSelectedIndex());
+                        int num = Integer.valueOf(counter.getAccessibleText());
+                        num--;
+                        counter.setAccessibleText(Integer.toString(num));
+                        counter.setText("Song selected: " + num);
+                        selecteddiff.remove(matchSong(selected));
+                        checkCount(counter, Integer.toString(getDesiredSize(mapsize)));
+                        updateAvg(avglabel, selecteddiff);
+                    }
                 }
             }
         });
@@ -104,7 +153,7 @@ public class Main extends Application {
                     num--;
                     counter.setAccessibleText(Integer.toString(num));
                     counter.setText("Song selected: " + num);
-                    selecteddiff.remove(mg.getBasePotential(selected));
+                    selecteddiff.remove(matchSong(selected));
                     checkCount(counter, Integer.toString(getDesiredSize(mapsize)));
                     updateAvg(avglabel, selecteddiff);
                 }
@@ -130,11 +179,19 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent event) {
                 Random r = new Random();
-                int a = r.nextInt(7);
-                int b = r.nextInt(7);
+                int a = r.nextInt(6) + 1;
+                int b = r.nextInt(6) + 1;
                 Alert g = new Alert(Alert.AlertType.INFORMATION);
                 g.setContentText(a + " , " + b);
                 g.show();
+            }
+        });
+
+        quickgen.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String[] rlist = sth.quickGenerateSongList(getDesiredSize(mapsize));
+                mg.generateMapAny(rlist, getDesiredSize(mapsize));
             }
         });
 
@@ -180,14 +237,14 @@ public class Main extends Application {
 
     public double matchSong(String title){
         SongTreeHelper sth = new SongTreeHelper();
-        ArrayList<String[]> list = sth.getSongList();
-        for(String[] pack : list){
-            try {
-                int index = Arrays.asList(sth.songlistFreePack).indexOf(title);
-                double diff = sth.songlistFreePackDiff[index];
-                return diff;
-            } catch (ArrayIndexOutOfBoundsException e){
-
+        ArrayList<SongTreeHelper.Pack> packs = sth.getSongPacks();
+        for (SongTreeHelper.Pack pack : packs) {
+            if (Arrays.stream(pack.getPackContent()).anyMatch(title::equals)) {
+                int index = Arrays.asList(pack.getPackContent()).indexOf(title);
+                if (index != -1) {
+                    double[] diffinfo = pack.getDiffInfo();
+                    return diffinfo[index];
+                }
             }
         }
         return 0.0;
