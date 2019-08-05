@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Chess.Main">
+   <children>
+      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Standard Map Generator">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="33.0" layoutY="30.0" prefHeight="16.0" prefWidth="54.0" text="Map Size" />
+                        <Slider fx:id="mapsize" blockIncrement="1.0" layoutX="104.0" layoutY="31.0" majorTickUnit="1.0" max="5.0" min="3.0" minorTickCount="0" snapToTicks="true" value="4.0" />
+                        <Label fx:id="sizetext" layoutX="254.0" layoutY="31.0" text="4x4" />
+                        <TreeView fx:id="songtree" layoutX="33.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" />
+                        <ListView fx:id="selected" layoutX="368.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" />
+                        <Button fx:id="add" layoutX="269.0" layoutY="115.0" mnemonicParsing="false" text="Add &gt;&gt;" />
+                        <Button fx:id="remove" layoutX="259.0" layoutY="189.0" mnemonicParsing="false" text="&lt;&lt; Remove" />
+                        <Button fx:id="generate" layoutX="251.0" layoutY="319.0" mnemonicParsing="false" text="Generate Map" />
+                        <Label fx:id="counter" accessibleText="0" layoutX="253.0" layoutY="157.0" text="Song selected: 0" textFill="RED" />
+                        <Label layoutX="409.0" layoutY="351.0" text="Version 0.3 by &quot;吃鸡棋bot&quot; LouiS" />
+                        <Label fx:id="avgdiff" layoutX="368.0" layoutY="277.0" text="Average Base Potential: 0.00" />
+                        <Button fx:id="quickgen" layoutX="127.0" layoutY="273.0" mnemonicParsing="false" text="Quick Generate" />
+                        <ComboBox layoutX="33.0" layoutY="273.0" prefHeight="23.0" prefWidth="83.0" promptText="Level..." visibleRowCount="3" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Random Number Generator">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="random" layoutX="266.0" layoutY="174.0" mnemonicParsing="false" text="Generate" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Score Prober">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="34.0" layoutY="31.0" text="User ID" />
+                        <TextField fx:id="userid" layoutX="95.0" layoutY="27.0" />
+                        <Button fx:id="addid" layoutX="273.0" layoutY="27.0" mnemonicParsing="false" text="Add" />
+                        <ListView fx:id="idlist" layoutX="34.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
+                        <ListView fx:id="recentlist" layoutX="371.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
+                        <Button fx:id="probe" layoutX="268.0" layoutY="315.0" mnemonicParsing="false" text="Probe" />
+                        <Button fx:id="removeid" layoutX="324.0" layoutY="27.0" mnemonicParsing="false" text="Remove" />
+                        <Label layoutX="34.0" layoutY="62.0" text="User ID List" />
+                        <Label layoutX="372.0" layoutY="62.0" text="Recent Score" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
