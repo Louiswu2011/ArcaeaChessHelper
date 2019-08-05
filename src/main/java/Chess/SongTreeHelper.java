@@ -29,7 +29,7 @@ public class SongTreeHelper {
     String[] songlistAVPack = {"Blossoms","Romance Wars","Moonheart","Lethaeus","Genesis"};
     public double[] songlistAVPackDiff = {7.6,7.4,8.5,9.5,8.4};
 
-    String[] songlistCSPack = {"Paradise","Flashback","Flyburg and Endroll","Party Vinyl,Nirv lucE"};
+    String[] songlistCSPack = {"Paradise","Flashback","Flyburg and Endroll","Party Vinyl","Nirv lucE"};
     public double[] songlistCSPackDiff = {7.8,8.5,9.2,9.8,10.3};
 
     String[] songlistCHUNITHMPack = {"Garakuta Doll Play","Ikazuchi","World Vanquisher"};

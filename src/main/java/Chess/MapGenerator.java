@@ -270,7 +270,6 @@ public class MapGenerator {
                         map[currentlayer][currentlayerbound] = sgroup.get(1).getSongTitle();
                         map[currentlayerbound][currentlayer] = sgroup.get(2).getSongTitle();
                         map[currentlayerbound][currentlayerbound] = sgroup.get(3).getSongTitle();
-
                     }
                 }else{
                     // Fill the line
@@ -279,22 +278,21 @@ public class MapGenerator {
                     linechunksize = sgroup.size() / 4;
                     if(linechunksize != 1){
                         // Fill upper row
-                        for(int i = currentlayer; i < linechunksize; i++){
-                            map[mappos][i+1] = sgroup.get(i).getSongTitle();
+                        for(int i = currentlayer; i <= linechunksize; i++){
+                            map[currentlayer][i+1] = sgroup.get(i).getSongTitle();
                         }
                         // Fill bottom row
-                        for(int j = currentlayer; j < linechunksize; j++){
+                        for(int j = currentlayer; j <= linechunksize; j++){
                             map[currentlayerbound][j+1] = sgroup.get(j + linechunksize).getSongTitle();
                         }
                         // Fill left line
-                        for(int k = currentlayer; k < linechunksize; k++){
-                            map[k+1][mappos] = sgroup.get(k + linechunksize + linechunksize).getSongTitle();
+                        for(int k = currentlayer; k <= linechunksize; k++){
+                            map[k+1][currentlayer] = sgroup.get(k + linechunksize + linechunksize).getSongTitle();
                         }
                         // Fill right line
-                        for(int l = currentlayer; l < linechunksize; l++){
-                            map[l+1][currentlayerbound] = sgroup.get(l + linechunksize + linechunksize + linechunksize).getSongTitle();
+                        for(int l = currentlayer; l <= linechunksize; l++){
+                            map[l+1][currentlayerbound] = sgroup.get(l + linechunksize + linechunksize + linechunksize - 1).getSongTitle();
                         }
-                        mappos+=2;
                         currentlayerbound--;
                         currentlayer++;
                     }else{
