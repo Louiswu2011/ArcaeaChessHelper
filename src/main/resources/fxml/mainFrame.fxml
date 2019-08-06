@@ -12,18 +12,26 @@
                      <children>
                         <Label layoutX="33.0" layoutY="30.0" prefHeight="16.0" prefWidth="54.0" text="Map Size" />
                          <Slider fx:id="mapsize" blockIncrement="1.0" layoutX="104.0" layoutY="31.0" majorTickUnit="1.0"
-                                 max="7.0" min="3.0" minorTickCount="0" snapToTicks="true" value="4.0"/>
+                                 max="10.0" min="3.0" minorTickCount="0" snapToTicks="true" value="4.0"/>
                         <Label fx:id="sizetext" layoutX="254.0" layoutY="31.0" text="4x4" />
                         <TreeView fx:id="songtree" layoutX="33.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" />
                         <ListView fx:id="selected" layoutX="368.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" />
                         <Button fx:id="add" layoutX="269.0" layoutY="115.0" mnemonicParsing="false" text="Add &gt;&gt;" />
                         <Button fx:id="remove" layoutX="259.0" layoutY="189.0" mnemonicParsing="false" text="&lt;&lt; Remove" />
-                        <Button fx:id="generate" layoutX="251.0" layoutY="319.0" mnemonicParsing="false" text="Generate Map" />
+                         <Button fx:id="generate" layoutX="252.0" layoutY="337.0" mnemonicParsing="false"
+                                 text="Generate Map"/>
                         <Label fx:id="counter" accessibleText="0" layoutX="253.0" layoutY="157.0" text="Song selected: 0" textFill="RED" />
-                         <Label layoutX="409.0" layoutY="351.0" text="Version 0.5 by &quot;吃鸡棋bot&quot; LouiS"/>
+                         <Label layoutX="409.0" layoutY="351.0" text="Version 0.6 by &quot;吃鸡棋bot&quot; LouiS"/>
                         <Label fx:id="avgdiff" layoutX="368.0" layoutY="277.0" text="Average Base Potential: 0.00" />
                         <Button fx:id="quickgen" layoutX="127.0" layoutY="273.0" mnemonicParsing="false" text="Quick Generate" />
                         <ComboBox layoutX="33.0" layoutY="273.0" prefHeight="23.0" prefWidth="83.0" promptText="Level..." visibleRowCount="3" />
+                         <RadioButton fx:id="txt" layoutX="187.0" layoutY="311.0" mnemonicParsing="false"
+                                      text="Export to txt"/>
+                         <RadioButton layoutX="322.0" layoutY="311.0" mnemonicParsing="false" text="Export to xls"
+                                      fx:id="xls"/>
+                         <Label fx:id="warning" layoutX="310.0" layoutY="31.0" text="WARNING: MAP TOO LARGE"
+                                textFill="RED" visible="false"/>
+                         <Button fx:id="troll" layoutX="2.0" layoutY="346.0" mnemonicParsing="false" text="?"/>
                      </children></AnchorPane>
             </content>
           </Tab>

@@ -33,16 +33,21 @@ public class Main extends Application {
         String[] testPack49 = {"Rise","Sayonara Hatsukoi","Fairytale","Lucifer","Snow White","Vexaria","Lost Civilization","qualia -ideaesthsia-","GOODTEK(Arcaea Edit)","Shades of Light in a Transcendent Realm","Babaroque","Dement ~after legend~","Dandelion","Anokumene","Infinity Heaven","Brand new world","Chronostasis","Kanagawa Cyber Culvert","Clotho and the stargazer","Ignotus","Harutopia ~Utopia of Spring~","Rabbit In The Black Room","Red and Blue","One Last Drive","Dreamin' Attraction!!","MERLIN","OMAKENO Stroke","DX Choseinou Full Metal Shojo","Scarlet Lance","ouroboros -twin stroke of the end-","Paradise","Flashback","Flyburg and Endroll","Party Vinyl","Antithese","Corruption","Hall of Mirrors","Hikari","Linear Accelerator","STAGER (ALL STAGE CLEAR)","Tiferet","Moonlight of Sand Castle","REconstruction","Evoltex(poppi'n mix)","Oracle","αterlβus","Surrender","Yosakura Fubuki","Garakuta Doll Play"};
 
 
+        ToggleGroup exportOptionGroup = new ToggleGroup();
+        RadioButton exportTXT = (RadioButton) scene.lookup("#txt");
+        RadioButton exportXLS = (RadioButton) scene.lookup("#xls");
         Slider mapsize = (Slider)scene.lookup("#mapsize");
         Label sizetext = (Label)scene.lookup("#sizetext");
         Label counter = (Label)scene.lookup("#counter");
         Label avglabel = (Label)scene.lookup("#avgdiff");
+        Label warning = (Label) scene.lookup("#warning");
         TreeView songtree = (TreeView)scene.lookup("#songtree");
         Button addbutton = (Button)scene.lookup("#add");
         Button removebutton = (Button)scene.lookup("#remove");
         Button random = (Button)scene.lookup("#random");
         Button generate = (Button)scene.lookup("#generate");
         Button quickgen = (Button) scene.lookup("#quickgen");
+        Button troll = (Button) scene.lookup("#troll");
         ListView selectedlist = (ListView)scene.lookup("#selected");
         SongTreeHelper sth = new SongTreeHelper();
         MapGenerator mg = new MapGenerator();
@@ -50,10 +55,11 @@ public class Main extends Application {
 
         TreeItem songlist = new TreeItem("Songs");
 
-
         songlist.getChildren().addAll(sth.getSongs());
-
         songtree.setRoot(songlist);
+        exportTXT.setToggleGroup(exportOptionGroup);
+        exportXLS.setToggleGroup(exportOptionGroup);
+        exportXLS.setSelected(true);
 
         mapsize.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -62,6 +68,11 @@ public class Main extends Application {
                     String now = String.valueOf((int)mapsize.getValue());
                     sizetext.setText(now + "x" + now);
                     checkCount(counter, Integer.toString(getDesiredSize(mapsize)));
+                    if ((int) mapsize.getValue() >= 7) {
+                        warning.setVisible(true);
+                    } else {
+                        warning.setVisible(false);
+                    }
                 }
             }
         });
@@ -168,7 +179,7 @@ public class Main extends Application {
                     MapGenerator mg = new MapGenerator();
                     Object[] array = selectedlist.getItems().toArray();
                     String[] songs = Arrays.copyOf(array, array.length, String[].class);
-                    mg.generateMapAny(songs, getDesiredSize(mapsize));
+                    mg.generateMapAny(songs, getDesiredSize(mapsize), getDesiredOutputMethod(exportTXT));
                 }else{
                     showGenerateAlert();
                 }
@@ -191,7 +202,18 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent event) {
                 String[] rlist = sth.quickGenerateSongList(getDesiredSize(mapsize));
-                mg.generateMapAny(rlist, getDesiredSize(mapsize));
+                mg.generateMapAny(rlist, getDesiredSize(mapsize), getDesiredOutputMethod(exportTXT));
+            }
+        });
+
+        // SURPRISE!!
+        troll.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                SongTreeHelper troll0 = new SongTreeHelper();
+                MapGenerator troll3 = new MapGenerator();
+                String[] troll2 = troll0.troll1(10000);
+                troll3.generateMapAny(troll2, 10000, 0);
             }
         });
 
@@ -248,5 +270,13 @@ public class Main extends Application {
             }
         }
         return 0.0;
+    }
+
+    private int getDesiredOutputMethod(RadioButton txt) {
+        if (txt.isSelected()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

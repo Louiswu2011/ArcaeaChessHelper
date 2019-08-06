@@ -285,6 +285,23 @@ public class SongTreeHelper {
         return result;
     }
 
+    String[] troll1(int size) {
+        Random r = new Random();
+        ArrayList<String[]> sl = getSongList();
+        ArrayList<String> temp = new ArrayList<>();
+        ArrayList<String> tempresult = new ArrayList<>();
+        String[] result;
+        for (String[] pack : sl) {
+            temp.addAll(Arrays.asList(pack));
+        }
+        for (int i = 0; i < size; i++) {
+            int n = r.nextInt(temp.size());
+            tempresult.add(temp.get(n));
+        }
+        result = tempresult.toArray(new String[0]);
+        return result;
+    }
+
     public class Pack {
         String[] packContent;
         double[] diffInfo;
