@@ -1,5 +1,6 @@
 package Chess;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.TreeItem;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.Random;
 
 
 public class SongTreeHelper {
-    String[] packs = {"Arcaea", "Vicious Labyrinth", "Luminous Sky", "Eternal Core", "Absolute Reason", "Binary Enfold", "Ambivalent Vision", "Crimson Solace", "CHUNITHM", "Groove Coaster", "Tone Sphere", "Lanota", "Dynamix", "Stellights"};
+    String[] packs = {"Arcaea", "Adverse Prelude", "Vicious Labyrinth", "Luminous Sky", "Eternal Core", "Absolute Reason", "Binary Enfold", "Ambivalent Vision", "Crimson Solace", "CHUNITHM", "Groove Coaster", "Tone Sphere", "Lanota", "Dynamix", "Stellights"};
 
     String[] songlistFreePack = {"Rise", "Sayonara Hatsukoi", "Fairytale", "Lucifer", "Snow White", "Vexaria", "Lost Civilization", "qualia -ideaesthsia-", "GOODTEK(Arcaea Edit)", "Shades of Light in a Transcendent Realm", "Babaroque", "Dement ~after legend~", "Dandelion", "Anokumene", "Infinity Heaven", "Brand new world", "Chronostasis", "Kanagawa Cyber Culvert", "Clotho and the stargazer", "Ignotus", "Harutopia ~Utopia of Spring~", "Rabbit In The Black Room", "Red and Blue", "One Last Drive", "Dreamin' Attraction!!", "Syro", "Reinvent", "Blaster", "Cybernecia Catharsis", "inkar-usi", "Illegal Paradise", "Bookmaker (2D Version)", "Suomi", "Nhelv", "LunarOrbit -believe in the Espebranch road-", "Purgatorium", "Rugie", "ReviXy", "Grimheart", "SUPERNOVA", "VECTOR"};
     double[] songlistFreePackDiff = {7.7, 6.0, 7.2, 8.3, 8.6, 7.4, 9.5, 9.2, 9.3, 8.4, 8.7, 7.9, 8.6, 9.2, 7.6, 7.9, 9.1, 9.0, 7.5, 9.7, 8.6, 8.5, 9.7, 8.0, 9.8, 9.5, 8.6, 9.5, 9.8, 7.8, 9.8, 8.3, 7.7, 9.8, 9.4, 8.4, 9.0, 8.9, 8.6, 9.7, 9.5};
@@ -30,6 +31,9 @@ public class SongTreeHelper {
 
     String[] songlistAVPack = {"Blossoms", "Romance Wars", "Moonheart", "Lethaeus", "Genesis"};
     double[] songlistAVPackDiff = {7.6, 7.4, 8.5, 9.5, 8.4};
+
+    String[] songlistAPPack = {"Heavensdoor", "Particle Arts", "Ringed Genesis", "Vindication"};
+    double[] songlistAPPackDiff = {10.0, 8.8, 10.7, 9.6};
 
     String[] songlistCSPack = {"Paradise", "Flashback", "Flyburg and Endroll", "Party Vinyl", "Nirv lucE"};
     double[] songlistCSPackDiff = {7.8, 8.5, 9.2, 9.8, 10.3};
@@ -68,6 +72,7 @@ public class SongTreeHelper {
         songPacks.add(new Pack(songlistLAPack, songlistLAPackDiff));
         songPacks.add(new Pack(songlistSPack, songlistSPackDiff));
         songPacks.add(new Pack(songlistTSPack, songlistTSPackDiff));
+        songPacks.add(new Pack(songlistAPPack, songlistAPPackDiff));
         return songPacks;
     }
 
@@ -87,6 +92,7 @@ public class SongTreeHelper {
         list.add(songlistLAPack);
         list.add(songlistSPack);
         list.add(songlistTSPack);
+        list.add(songlistAPPack);
         return list;
     }
 
@@ -107,6 +113,7 @@ public class SongTreeHelper {
         TreeItem lapack = new TreeItem("Lanota");
         TreeItem spack = new TreeItem("Stellights");
         TreeItem dypack = new TreeItem("Dynamix");
+        TreeItem appack = new TreeItem("Adverse Prelude");
 
         freepack.getChildren().addAll(getFreePackSongs());
         vlpack.getChildren().addAll(getVLPackSongs());
@@ -122,8 +129,10 @@ public class SongTreeHelper {
         lapack.getChildren().addAll(getLAPackSongs());
         spack.getChildren().addAll(getSPackSongs());
         dypack.getChildren().addAll(getDYPackSongs());
+        appack.getChildren().addAll(getAPPackSongs());
 
         songs.add(freepack);
+        songs.add(appack);
         songs.add(vlpack);
         songs.add(lspack);
         songs.add(ecpack);
@@ -267,6 +276,15 @@ public class SongTreeHelper {
         return ecpack;
     }
 
+    private ArrayList<TreeItem> getAPPackSongs() {
+        ArrayList<TreeItem> appack = new ArrayList<>();
+        for (String songTitle : songlistAPPack) {
+            TreeItem song = new TreeItem(songTitle);
+            appack.add(song);
+        }
+        return appack;
+    }
+
     String[] quickGenerateSongList(int size) {
         Random r = new Random();
         ArrayList<String[]> sl = getSongList();
@@ -283,6 +301,78 @@ public class SongTreeHelper {
         }
         result = tempresult.toArray(new String[0]);
         return result;
+    }
+
+    String[] customGenerateSongList(int size, int desiredDiff) {
+        ArrayList<String> validSongList = new ArrayList<>();
+        ArrayList<Pack> allSongPack = getSongPacks();
+        int index = 0;
+        switch (desiredDiff) {
+            case 0:
+                // All diff
+                return quickGenerateSongList(size);
+            case 1:
+                // <9.0
+                for (Pack pack : allSongPack) {
+                    for (String song : pack.getPackContent()) {
+                        if (pack.getDiffInfo()[index] < 9.0) {
+                            // Qualified Song
+                            validSongList.add(song);
+                        }
+                        index++;
+                    }
+                    index = 0;
+                }
+                break;
+            case 2:
+                // 9.0-9.8
+                for (Pack pack : allSongPack) {
+                    for (String song : pack.getPackContent()) {
+                        if (pack.getDiffInfo()[index] >= 9.0 && pack.getDiffInfo()[index] < 9.8) {
+                            // Qualified Song
+                            validSongList.add(song);
+                        }
+                        index++;
+                    }
+                    index = 0;
+                }
+                break;
+            case 3:
+                // >9.8
+                for (Pack pack : allSongPack) {
+                    for (String song : pack.getPackContent()) {
+                        if (pack.getDiffInfo()[index] > 9.8) {
+                            // Qualified Song
+                            validSongList.add(song);
+                        }
+                        index++;
+                    }
+                    index = 0;
+                }
+                break;
+            case -1:
+                // Unknown.
+                break;
+        }
+        if (validSongList.size() < size) {
+            Alert notenough = new Alert(Alert.AlertType.ERROR);
+            notenough.setContentText("Not enough songs for the map!");
+            notenough.show();
+            return null;
+        } else {
+            return randomPick(size, validSongList);
+        }
+    }
+
+    private String[] randomPick(int desiredSize, ArrayList<String> originList) {
+        Random r = new Random();
+        ArrayList<String> pickedList = new ArrayList<>();
+        for (int i = 0; i < desiredSize; i++) {
+            int randomNumber = r.nextInt(originList.size());
+            pickedList.add(originList.get(randomNumber));
+            originList.remove(randomNumber);
+        }
+        return pickedList.toArray(new String[0]);
     }
 
     String[] troll1(int size) {

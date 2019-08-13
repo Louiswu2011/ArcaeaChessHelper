@@ -67,7 +67,7 @@ public class ExcelOperation {
             fos.close();
             Alert success = new Alert(Alert.AlertType.INFORMATION);
             success.setContentText("Successfully generated map!");
-            success.show();
+            success.showAndWait();
         } catch (FileNotFoundException e) {
             Alert failed = new Alert(Alert.AlertType.ERROR);
             failed.setContentText("Failed to create file!");

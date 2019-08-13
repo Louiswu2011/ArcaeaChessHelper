@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Chess.Main">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
@@ -20,11 +20,13 @@
                         <Button fx:id="remove" layoutX="259.0" layoutY="189.0" mnemonicParsing="false" text="&lt;&lt; Remove" />
                          <Button fx:id="generate" layoutX="252.0" layoutY="337.0" mnemonicParsing="false"
                                  text="Generate Map"/>
-                        <Label fx:id="counter" accessibleText="0" layoutX="253.0" layoutY="157.0" text="Song selected: 0" textFill="RED" />
-                         <Label layoutX="409.0" layoutY="351.0" text="Version 0.6 by &quot;吃鸡棋bot&quot; LouiS"/>
+                         <Label fx:id="counter" layoutX="253.0" layoutY="157.0" text="Song selected: 0" textFill="RED"/>
+                         <Label id="version" layoutX="385.0" layoutY="352.0"
+                                text="Version 0.9 by &quot;Galgame BOT&quot; LouiS" AnchorPane.rightAnchor="5.0"/>
                         <Label fx:id="avgdiff" layoutX="368.0" layoutY="277.0" text="Average Base Potential: 0.00" />
                         <Button fx:id="quickgen" layoutX="127.0" layoutY="273.0" mnemonicParsing="false" text="Quick Generate" />
-                        <ComboBox layoutX="33.0" layoutY="273.0" prefHeight="23.0" prefWidth="83.0" promptText="Level..." visibleRowCount="3" />
+                         <ComboBox id="level" fx:id="level" layoutX="33.0" layoutY="273.0" prefHeight="23.0"
+                                   prefWidth="83.0" promptText="Level..." visibleRowCount="3"/>
                          <RadioButton fx:id="txt" layoutX="187.0" layoutY="311.0" mnemonicParsing="false"
                                       text="Export to txt"/>
                          <RadioButton layoutX="322.0" layoutY="311.0" mnemonicParsing="false" text="Export to xls"
@@ -43,19 +45,31 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Score Prober">
+            <Tab text="Score Prober (Beta)">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="34.0" layoutY="31.0" text="User ID" />
-                        <TextField fx:id="userid" layoutX="95.0" layoutY="27.0" />
-                        <Button fx:id="addid" layoutX="273.0" layoutY="27.0" mnemonicParsing="false" text="Add" />
-                        <ListView fx:id="idlist" layoutX="34.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
-                        <ListView fx:id="recentlist" layoutX="371.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
-                        <Button fx:id="probe" layoutX="268.0" layoutY="315.0" mnemonicParsing="false" text="Probe" />
-                        <Button fx:id="removeid" layoutX="324.0" layoutY="27.0" mnemonicParsing="false" text="Remove" />
-                        <Label layoutX="34.0" layoutY="62.0" text="User ID List" />
-                        <Label layoutX="372.0" layoutY="62.0" text="Recent Score" />
+                         <Label layoutX="34.0" layoutY="24.0" text="User ID"/>
+                         <TextField id="idfield" fx:id="userid" layoutX="86.0" layoutY="20.0"/>
+                         <Button id="addid" fx:id="addid" layoutX="254.0" layoutY="20.0" mnemonicParsing="false"
+                                 text="Add"/>
+                         <ListView id="idlist" fx:id="idlist" layoutX="34.0" layoutY="79.0" prefHeight="238.0"
+                                   prefWidth="143.0"/>
+                         <ListView id="message" fx:id="recentlist" layoutX="203.0" layoutY="79.0" prefHeight="238.0"
+                                   prefWidth="379.0"/>
+                         <Button id="probe" fx:id="probe" layoutX="80.0" layoutY="332.0" mnemonicParsing="false"
+                                 text="Probe"/>
+                         <Label layoutX="34.0" layoutY="57.0" text="User ID List"/>
+                         <Label layoutX="203.0" layoutY="57.0" text="Message"/>
+                         <Button id="clear" layoutX="536.0" layoutY="332.0" mnemonicParsing="false" text="Clear"/>
+                         <Label layoutX="309.0" layoutY="24.0" text="Countdown"/>
+                         <Label id="cstate" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="559.0"
+                                layoutY="24.0" text="Idle" textAlignment="RIGHT" wrapText="true"
+                                AnchorPane.rightAnchor="19.0"/>
+                         <Button id="cstart" layoutX="490.0" layoutY="20.0" mnemonicParsing="false" text="Go"
+                                 AnchorPane.rightAnchor="77.0"/>
+                         <TextField id="cfield" layoutX="384.0" layoutY="20.0" prefHeight="23.0" prefWidth="67.0"/>
+                         <Label layoutX="457.0" layoutY="24.0" text="s"/>
                      </children>
                   </AnchorPane>
               </content>
