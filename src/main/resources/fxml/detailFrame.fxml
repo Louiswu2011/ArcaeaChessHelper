@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="310.0" prefWidth="250.0"
+            xmlns="http://javafx.com/javafx/8.0.141">
+    <children>
+        <Label layoutX="14.0" layoutY="18.0" text="Player: " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="18.0"/>
+        <Label fx:id="nameholder" layoutX="57.0" layoutY="18.0" text="PlayerNameHolder" AnchorPane.leftAnchor="57.0"
+               AnchorPane.topAnchor="18.0"/>
+        <Button fx:id="close" layoutX="67.0" layoutY="267.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="66.0"
+                text="Close" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="67.0" AnchorPane.rightAnchor="67.0"/>
+        <Label layoutX="14.0" layoutY="43.0" text="Potential: "/>
+        <Label fx:id="potentialholder" layoutX="74.0" layoutY="43.0" text="PotentialHolder"
+               AnchorPane.leftAnchor="74.0"/>
+        <Label layoutX="14.0" layoutY="85.0" text="Song: " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="85.0"/>
+        <Label fx:id="idholder" layoutX="54.0" layoutY="85.0" text="SongIDHolder" AnchorPane.leftAnchor="54.0"
+               AnchorPane.topAnchor="85.0"/>
+        <Label layoutX="14.0" layoutY="108.0" text="Pure: " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="108.0"/>
+        <Label fx:id="pureholder" layoutX="50.0" layoutY="108.0" text="PureHolder" AnchorPane.leftAnchor="50.0"/>
+        <Label layoutX="14.0" layoutY="130.0" text="Far:"/>
+        <Label fx:id="farholder" layoutX="41.0" layoutY="130.0" text="FarHolder"/>
+        <Separator layoutX="-2.0" layoutY="70.0" prefWidth="250.0"/>
+        <Label layoutX="14.0" layoutY="152.0" text="Lost: "/>
+        <Label fx:id="lostholder" layoutX="49.0" layoutY="152.0" text="LostHolder"/>
+        <Label layoutX="14.0" layoutY="175.0" text="B.Potential: "/>
+        <Label fx:id="bpholder" layoutX="85.0" layoutY="175.0" text="BasePotentialHolder"/>
+        <Label fx:id="typeholder" alignment="CENTER" layoutY="250.0" prefHeight="15.0" prefWidth="250.0"
+               text="PURE MEMORY" textAlignment="CENTER" visible="false"/>
+        <Label fx:id="timeholder" layoutX="14.0" layoutY="221.0" text="Played on"/>
+        <Label fx:id="lockstate" layoutX="170.0" layoutY="130.0" text="Skill Locked" textFill="#ff1313"
+               AnchorPane.rightAnchor="12.0"/>
+        <ProgressBar fx:id="healthbar" layoutX="63.0" layoutY="198.0" prefHeight="18.0" prefWidth="141.0"
+                     progress="1.0"/>
+        <Label layoutX="14.0" layoutY="198.0" text="Health:"/>
+        <Label fx:id="healthpoint" layoutX="209.0" layoutY="199.0" text="100%" AnchorPane.rightAnchor="9.0"/>
+    </children>
+</AnchorPane>

@@ -158,7 +158,7 @@ public class MapGenerator {
         // System.out.println(g1 + "/" + g2 + "/" + g3);
     }*/
 
-    public void generateMapAny(String[] songs, int size, int outputMethod) { // 0 is excel file, 1 is txt file
+    public String[][] generateMapAny(String[] songs, int size, int outputMethod) { // 0 is excel file, 1 is txt file
         // Check the number of songs
         if(size==songs.length){
             // Create a map
@@ -313,62 +313,9 @@ public class MapGenerator {
                 groupcount++;
             }
 
-            if (outputMethod == 0) {
-                // Print out the map to Excel file
-                ExcelOperation eo = new ExcelOperation();
-                eo.writeExcelFile(System.getProperty("user.dir") + "\\map.xlsx", map, size);
-                // Open the Excel file
-                try {
-                    Desktop.getDesktop().open(new File(System.getProperty("user.dir") + "\\map.xlsx"));
-                } catch (IOException e) {
-                    Alert failed = new Alert(Alert.AlertType.ERROR);
-                    failed.setContentText("Failed to open Excel!");
-                    failed.show();
-                    e.printStackTrace();
-                }
-            } else {
-                // Print out the map to txt file
-                File txt = new File(System.getProperty("user.dir") + "\\map.txt");
-                BufferedWriter bw = null;
-                try {
-                    if (!txt.exists()) {
-                        txt.createNewFile();
-                    }
-                    Alert success = new Alert(Alert.AlertType.INFORMATION);
-                    FileWriter fw = new FileWriter(txt);
-                    bw = new BufferedWriter(fw);
-                    for (int i = 0; i <= bound - 1; i++) {
-                        for (int j = 0; j <= bound - 1; j++) {
-                            if (j == bound - 1) {
-                                bw.write("[" + map[i][j] + "]");
-                                bw.write("\r\n");
-                            } else {
-                                bw.write("[" + map[i][j] + "]  ");
-                            }
-                        }
-                    }
-                    success.setContentText("Successfully generated map!");
-                    success.showAndWait();
-                    Process p = Runtime.getRuntime().exec("notepad " + System.getProperty("user.dir") + "\\map.txt");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Alert ioerror = new Alert(Alert.AlertType.ERROR);
-                    ioerror.setContentText("Error creating text file!");
-                    ioerror.show();
-                } finally {
-                    try {
-                        if (bw != null) {
-                            bw.close();
-                        }
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                        Alert closeerror = new Alert(Alert.AlertType.ERROR);
-                        closeerror.setContentText("Error closing the BufferedWriter!");
-                        closeerror.show();
-                    }
-                }
-            }
+            output(outputMethod, map, size, bound);
 
+            return map;
 
             // Test Only
             /*for (int i = 0; i <= 4; i++) {
@@ -382,6 +329,75 @@ public class MapGenerator {
                 }
             }*/
 
+        } else {
+            return null;
+        }
+    }
+
+    private boolean checkOdd(int num) {
+        if (num % 2 == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private void output(int outputMethod, String[][] map, int size, int bound) {
+        if (outputMethod == 0) {
+            // Print out the map to Excel file
+            ExcelOperation eo = new ExcelOperation();
+            eo.writeExcelFile(System.getProperty("user.dir") + "\\game.xlsx", map, size);
+            // Open the Excel file
+            try {
+                Desktop.getDesktop().open(new File(System.getProperty("user.dir") + "\\game.xlsx"));
+            } catch (IOException e) {
+                Alert failed = new Alert(Alert.AlertType.ERROR);
+                failed.setContentText("Failed to open Excel!");
+                failed.show();
+                e.printStackTrace();
+            }
+        } else {
+            // Print out the map to txt file
+            File txt = new File(System.getProperty("user.dir") + "\\map.txt");
+            BufferedWriter bw = null;
+            try {
+                if (!txt.exists()) {
+                    txt.createNewFile();
+                }
+                Alert success = new Alert(Alert.AlertType.INFORMATION);
+                FileWriter fw = new FileWriter(txt);
+                bw = new BufferedWriter(fw);
+                for (int i = 0; i <= bound - 1; i++) {
+                    for (int j = 0; j <= bound - 1; j++) {
+                        if (j == bound - 1) {
+                            bw.write("[" + map[i][j] + "]");
+                            bw.write("\r\n");
+                        } else {
+                            bw.write("[" + map[i][j] + "]  ");
+                        }
+                    }
+                }
+                success.setContentText("Successfully generated map!");
+                success.showAndWait();
+                Process p = Runtime.getRuntime().exec("notepad " + System.getProperty("user.dir") + "\\map.txt");
+            } catch (IOException e) {
+                e.printStackTrace();
+                Alert ioerror = new Alert(Alert.AlertType.ERROR);
+                ioerror.setContentText("Error creating text file!");
+                ioerror.show();
+            } finally {
+                try {
+                    if (bw != null) {
+                        bw.close();
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    Alert closeerror = new Alert(Alert.AlertType.ERROR);
+                    closeerror.setContentText("Error closing the BufferedWriter!");
+                    closeerror.show();
+                }
+            }
+
         }
     }
 
@@ -389,7 +405,7 @@ public class MapGenerator {
         String songTitle;
         double basePotential;
 
-        public Song(String title, double potential){
+        public Song(String title, double potential) {
             this.songTitle = title;
             this.basePotential = potential;
         }
@@ -408,15 +424,6 @@ public class MapGenerator {
 
         public void setBasePotential(double basePotential) {
             this.basePotential = basePotential;
-        }
-    }
-
-
-    private boolean checkOdd(int num){
-        if(num % 2 ==0){
-            return false;
-        }else{
-            return true;
         }
     }
 

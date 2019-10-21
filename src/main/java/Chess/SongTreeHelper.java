@@ -9,10 +9,10 @@ import java.util.Random;
 
 
 public class SongTreeHelper {
-    String[] packs = {"Arcaea", "Adverse Prelude", "Vicious Labyrinth", "Luminous Sky", "Eternal Core", "Absolute Reason", "Binary Enfold", "Ambivalent Vision", "Crimson Solace", "CHUNITHM", "Groove Coaster", "Tone Sphere", "Lanota", "Dynamix", "Stellights"};
+    String[] packs = {"Memory Archive", "Arcaea", "Sunset Radiance", "Adverse Prelude", "Vicious Labyrinth", "Luminous Sky", "Eternal Core", "Absolute Reason", "Binary Enfold", "Ambivalent Vision", "Crimson Solace", "CHUNITHM", "Groove Coaster", "Tone Sphere", "Lanota", "Dynamix", "Stellights"};
 
-    String[] songlistFreePack = {"Rise", "Sayonara Hatsukoi", "Fairytale", "Lucifer", "Snow White", "Vexaria", "Lost Civilization", "qualia -ideaesthsia-", "GOODTEK(Arcaea Edit)", "Shades of Light in a Transcendent Realm", "Babaroque", "Dement ~after legend~", "Dandelion", "Anokumene", "Infinity Heaven", "Brand new world", "Chronostasis", "Kanagawa Cyber Culvert", "Clotho and the stargazer", "Ignotus", "Harutopia ~Utopia of Spring~", "Rabbit In The Black Room", "Red and Blue", "One Last Drive", "Dreamin' Attraction!!", "Syro", "Reinvent", "Blaster", "Cybernecia Catharsis", "inkar-usi", "Illegal Paradise", "Bookmaker (2D Version)", "Suomi", "Nhelv", "LunarOrbit -believe in the Espebranch road-", "Purgatorium", "Rugie", "ReviXy", "Grimheart", "SUPERNOVA", "VECTOR"};
-    double[] songlistFreePackDiff = {7.7, 6.0, 7.2, 8.3, 8.6, 7.4, 9.5, 9.2, 9.3, 8.4, 8.7, 7.9, 8.6, 9.2, 7.6, 7.9, 9.1, 9.0, 7.5, 9.7, 8.6, 8.5, 9.7, 8.0, 9.8, 9.5, 8.6, 9.5, 9.8, 7.8, 9.8, 8.3, 7.7, 9.8, 9.4, 8.4, 9.0, 8.9, 8.6, 9.7, 9.5};
+    String[] songlistFreePack = {"Rise", "Sayonara Hatsukoi", "Fairytale", "Lucifer", "Snow White", "Vexaria", "Lost Civilization", "qualia -ideaesthsia-", "GOODTEK(Arcaea Edit)", "Shades of Light in a Transcendent Realm", "Babaroque", "Dement ~after legend~", "Dandelion", "Anokumene", "Infinity Heaven", "Brand new world", "Chronostasis", "Kanagawa Cyber Culvert", "Clotho and the stargazer", "Ignotus", "Harutopia ~Utopia of Spring~", "Rabbit In The Black Room", "Red and Blue", "One Last Drive", "Dreamin' Attraction!!", "Syro", "Reinvent", "Blaster", "Cybernecia Catharsis", "inkar-usi", "Illegal Paradise", "Bookmaker (2D Version)", "Suomi", "Nhelv", "LunarOrbit -believe in the Espebranch road-", "Purgatorium", "Rugie", "ReviXy", "Grimheart", "SUPERNOVA", "VECTOR", "Diode", "FREEF4LL"};
+    double[] songlistFreePackDiff = {7.7, 6.0, 7.2, 8.3, 8.6, 7.4, 9.5, 9.2, 9.3, 8.4, 8.7, 7.9, 8.6, 9.2, 7.6, 7.9, 9.1, 9.0, 7.5, 9.7, 8.6, 8.5, 9.7, 8.0, 9.8, 9.5, 8.6, 9.5, 9.8, 7.8, 9.8, 8.3, 7.7, 9.8, 9.4, 8.4, 9.0, 8.9, 8.6, 9.7, 9.5, 8.2, 8.7};
 
     String[] songlistVLPack = {"SOUNDWiTCH", "Iconoclast", "trappola bewitching", "conflict", "Axium Crisis", "Grievous Lady"};
     double[] songlistVLPackDiff = {9.9, 9.4, 10.0, 10.2, 10.6, 11.2};
@@ -35,8 +35,8 @@ public class SongTreeHelper {
     String[] songlistAPPack = {"Heavensdoor", "Particle Arts", "Ringed Genesis", "Vindication"};
     double[] songlistAPPackDiff = {10.0, 8.8, 10.7, 9.6};
 
-    String[] songlistCSPack = {"Paradise", "Flashback", "Flyburg and Endroll", "Party Vinyl", "Nirv lucE"};
-    double[] songlistCSPackDiff = {7.8, 8.5, 9.2, 9.8, 10.3};
+    String[] songlistCSPack = {"Paradise", "Flashback", "Flyburg and Endroll", "Party Vinyl", "Nirv lucE", "GLORY: ROAD"};
+    double[] songlistCSPackDiff = {7.8, 8.5, 9.2, 9.8, 10.3, 10.5};
 
     String[] songlistCHUNITHMPack = {"Garakuta Doll Play", "Ikazuchi", "World Vanquisher"};
     double[] songlistCHUNITHMPackDiff = {10.3, 10.4, 10.6};
@@ -56,6 +56,12 @@ public class SongTreeHelper {
     String[] songlistDYPack = {"Moonlight of Sand Castle", "REconstruction", "Evoltex(poppi'n mix)", "Oracle", "αterlβus"};
     double[] songlistDYPackDiff = {7.7, 8.7, 8.9, 9.2, 10.5};
 
+    String[] songlistSRPack = {"Chelsea", "AI[UE]OON", "A Wandering Melody of Love", "Tie me down gently", "Valhalla:0"};
+    double[] songlistSRPackDiff = {8.6, 9.4, 9.6, 8.4, 10.5};
+
+    String[] songlistMAPack = {"Mirzam", "DataErr0r", "CROSS the SOUL", "Your voice so... feat. Such", "Impure Bird", "Auxesia", "Modelista", "Metallic Punisher", "carmine:scythe", "γuarδina", "Be There", "Call My Name feat. Yukacco", "Fallensquare", "dropdead(prs)", "Alexandrite", "Astral tale", "Phantasia", "Empire of Winter", "Libertas", "Dot to Dot feat. shully", "Dreadnought"};
+    double[] songlistMAPackDiff = {9.9, 9.5, 9.6, 9.4, 9.5, 9.4, 10.0, 10.3, 9.6, 10.5, 9.5, 8.8, 9.8, 9.1, 9.9, 9.4, 9.2, 9.0, 9.2, 8.7, 9.7};
+
     public ArrayList<Pack> getSongPacks() {
         ArrayList<Pack> songPacks = new ArrayList<>();
         songPacks.add(new Pack(songlistECPack, songlistECPackDiff));
@@ -73,6 +79,8 @@ public class SongTreeHelper {
         songPacks.add(new Pack(songlistSPack, songlistSPackDiff));
         songPacks.add(new Pack(songlistTSPack, songlistTSPackDiff));
         songPacks.add(new Pack(songlistAPPack, songlistAPPackDiff));
+        songPacks.add(new Pack(songlistSRPack, songlistSRPackDiff));
+        songPacks.add(new Pack(songlistMAPack, songlistMAPackDiff));
         return songPacks;
     }
 
@@ -93,13 +101,18 @@ public class SongTreeHelper {
         list.add(songlistSPack);
         list.add(songlistTSPack);
         list.add(songlistAPPack);
+        list.add(songlistSRPack);
+        list.add(songlistMAPack);
         return list;
     }
 
     public ArrayList<TreeItem> getSongs() {
         ArrayList<TreeItem> songs = new ArrayList<>();
 
+        TreeItem mapack = new TreeItem("Memory Archive");
         TreeItem freepack = new TreeItem("Arcaea");
+        TreeItem srpack = new TreeItem("Sunset Radiance");
+        TreeItem appack = new TreeItem("Adverse Prelude");
         TreeItem vlpack = new TreeItem("Vicious Labyrinth");
         TreeItem lspack = new TreeItem("Luminous Sky");
         TreeItem ecpack = new TreeItem("Eternal Core");
@@ -113,9 +126,11 @@ public class SongTreeHelper {
         TreeItem lapack = new TreeItem("Lanota");
         TreeItem spack = new TreeItem("Stellights");
         TreeItem dypack = new TreeItem("Dynamix");
-        TreeItem appack = new TreeItem("Adverse Prelude");
 
+
+        mapack.getChildren().addAll(getMAPackSongs());
         freepack.getChildren().addAll(getFreePackSongs());
+        srpack.getChildren().addAll(getSRPackSongs());
         vlpack.getChildren().addAll(getVLPackSongs());
         lspack.getChildren().addAll(getLSPackSongs());
         ecpack.getChildren().addAll(getECPackSongs());
@@ -131,7 +146,9 @@ public class SongTreeHelper {
         dypack.getChildren().addAll(getDYPackSongs());
         appack.getChildren().addAll(getAPPackSongs());
 
+        songs.add(mapack);
         songs.add(freepack);
+        songs.add(srpack);
         songs.add(appack);
         songs.add(vlpack);
         songs.add(lspack);
@@ -150,6 +167,15 @@ public class SongTreeHelper {
         return songs;
     }
 
+    private ArrayList<TreeItem> getMAPackSongs() {
+        ArrayList<TreeItem> mapack = new ArrayList<>();
+        for (String songTitle : songlistMAPack) {
+            TreeItem song = new TreeItem(songTitle);
+            mapack.add(song);
+        }
+        return mapack;
+    }
+
     private ArrayList<TreeItem> getFreePackSongs() {
         ArrayList<TreeItem> freepack = new ArrayList<>();
         for (String songTitle : songlistFreePack) {
@@ -157,6 +183,15 @@ public class SongTreeHelper {
             freepack.add(song);
         }
         return freepack;
+    }
+
+    private ArrayList<TreeItem> getSRPackSongs() {
+        ArrayList<TreeItem> srpack = new ArrayList<>();
+        for (String songTitle : songlistSRPack) {
+            TreeItem song = new TreeItem(songTitle);
+            srpack.add(song);
+        }
+        return srpack;
     }
 
     private ArrayList<TreeItem> getVLPackSongs() {
@@ -326,9 +361,35 @@ public class SongTreeHelper {
                 break;
             case 2:
                 // 9.0-9.8
+                // Only pick free songs / main story pack in this range
+                ArrayList<Pack> matchPack = new ArrayList<>();
+                Pack freePack = new Pack(songlistFreePack, songlistFreePackDiff);
+                Pack ap = new Pack(songlistAPPack, songlistAPPackDiff);
+                Pack vl = new Pack(songlistVLPack, songlistVLPackDiff);
+                Pack ls = new Pack(songlistLSPack, songlistLSPackDiff);
+                Pack ec = new Pack(songlistECPack, songlistECPackDiff);
+                matchPack.add(freePack);
+                matchPack.add(vl);
+                matchPack.add(ls);
+                matchPack.add(ap);
+                matchPack.add(ec);
+                for (Pack mPack : matchPack) {
+                    for (String song : mPack.getPackContent()) {
+                        if (mPack.getDiffInfo()[index] >= 9.0 && mPack.getDiffInfo()[index] <= 9.8) {
+                            // Qualified Song
+                            validSongList.add(song);
+                        }
+                        index++;
+                    }
+                    index = 0;
+                }
+                index = 0;
+                break;
+            case 3:
+                // >9.8
                 for (Pack pack : allSongPack) {
                     for (String song : pack.getPackContent()) {
-                        if (pack.getDiffInfo()[index] >= 9.0 && pack.getDiffInfo()[index] < 9.8) {
+                        if (pack.getDiffInfo()[index] > 9.8) {
                             // Qualified Song
                             validSongList.add(song);
                         }
@@ -337,11 +398,11 @@ public class SongTreeHelper {
                     index = 0;
                 }
                 break;
-            case 3:
-                // >9.8
+            case 4:
+                // 9.5-10.3
                 for (Pack pack : allSongPack) {
                     for (String song : pack.getPackContent()) {
-                        if (pack.getDiffInfo()[index] > 9.8) {
+                        if (pack.getDiffInfo()[index] >= 9.5 && pack.getDiffInfo()[index] <= 10.3) {
                             // Qualified Song
                             validSongList.add(song);
                         }

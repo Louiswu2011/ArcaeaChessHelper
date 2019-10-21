@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="70.0" prefWidth="200.0"
+            xmlns="http://javafx.com/javafx/8.0.141">
+    <children>
+        <ColorPicker fx:id="picker" layoutX="6.0" layoutY="7.0" prefHeight="23.0" prefWidth="118.0"/>
+        <Button fx:id="confirm" layoutX="132.0" layoutY="41.0" mnemonicParsing="false" text="Confirm"/>
+        <Button fx:id="cancel" layoutX="69.0" layoutY="41.0" mnemonicParsing="false" text="Cancel"/>
+    </children>
+</AnchorPane>
